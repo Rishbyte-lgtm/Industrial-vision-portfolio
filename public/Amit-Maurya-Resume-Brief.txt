@@ -1,0 +1,24 @@
+Amit Maurya
+Computer Vision & Industrial Automation Engineer
+
+Tagline:
+Building AI-Powered Vision Systems for Industrial Automation
+
+Core Skills:
+Python, OpenCV, YOLOv8, Computer Vision, Siemens PLC, TIA Portal, Snap7, PyQt, Industrial Automation, Machine Vision
+
+Experience:
+Volkswagen Group India - Student Intern
+Exposure to industrial manufacturing, automation systems, engineering workflows, and machine vision applications.
+
+Highlighted Achievement:
+Certificate of Appreciation for Camera Vision Automation Project
+
+Projects:
+AI-Based Camshaft Angle Detection System
+Vision Orchestration Unit
+PLC Integrated Vision Inspection System
+
+Links:
+GitHub: https://github.com/Rishbyte-lgtm
+LinkedIn: https://www.linkedin.com/in/amit-maurya-84b0922a5/

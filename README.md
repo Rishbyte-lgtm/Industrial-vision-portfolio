@@ -1,68 +1,136 @@
 # Amit Maurya Portfolio
 
-Premium Next.js portfolio for Amit Maurya, a Computer Vision and Industrial Automation Engineer building AI-powered machine vision systems for manufacturing workflows.
+Professional portfolio showcasing Computer Vision, Industrial Automation, AI-powered inspection systems, and Siemens PLC integration projects.
+
+## About
+
+I am a Computer Vision and Industrial Automation Engineer focused on building intelligent machine vision solutions for manufacturing and industrial environments.
+
+My work combines AI, computer vision, PLC integration, and automation technologies to develop practical industrial systems.
+
+---
 
 ## Featured Projects
 
-- AI-Based Camshaft Angle Detection System
-- Vision Orchestration Unit
-- PLC Integrated Vision Inspection System
+### AI-Based Camshaft Angle Detection System
 
-## Technologies
+Industrial machine vision system for automated camshaft angle measurement and validation.
 
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Resend
-- Python
-- OpenCV
-- YOLOv8
-- Siemens PLC
-- Snap7
-- PyQt
+**Highlights**
 
-## Links
+* Real-time image processing
+* PLC-triggered inspections
+* Automatic PASS/FAIL decisions
+* Operator dashboard
+* Equipment health monitoring
 
-- Portfolio: `portfolio.coderishabhlab.qzz.io`
-- LinkedIn: `linkedin.com/in/amit-maurya-84b0922a5`
-- GitHub: `github.com/Rishbyte-lgtm`
+**Tech Stack**
+Python • OpenCV • Siemens PLC • Snap7 • PyQt
 
-## Local Setup
+---
 
-```powershell
-npm install
-npm run dev
-```
+### Vision Orchestration Unit
 
-Open `http://localhost:3000`.
+Centralized platform for managing computer vision projects from dataset creation to deployment.
 
-## Contact Form Email Delivery
+**Highlights**
 
-The contact form uses a Next.js App Router API route at `app/api/contact/route.ts` and sends email through Resend.
+* Dataset management
+* Training pipeline orchestration
+* Inference monitoring
+* Deployment management
+* Workflow automation
 
-Create a local `.env.local` file:
+**Tech Stack**
+Python • Computer Vision • AI Workflows
 
-```env
-RESEND_API_KEY=your_resend_api_key
-```
+---
 
-Optional production sender:
+### PLC Integrated Vision Inspection System
 
-```env
-RESEND_FROM_EMAIL="Amit Maurya Portfolio <portfolio@yourdomain.com>"
-```
+Machine vision framework integrated with Siemens PLCs for industrial automation workflows.
 
-For Vercel, add the same variables in:
+**Highlights**
 
-`Project Settings -> Environment Variables`
+* PLC communication
+* Trigger-based inspections
+* Automated result transmission
+* Process monitoring
 
-Required:
+**Tech Stack**
+Python • Siemens PLC • Snap7 • OpenCV
 
-- `RESEND_API_KEY`
+---
 
-Optional:
+## Core Expertise
 
-- `RESEND_FROM_EMAIL`
+### Computer Vision
 
-If `RESEND_API_KEY` is missing, the API returns a clear `503` error and the website shows a friendly failure message instead of crashing.
+* YOLOv8
+* OpenCV
+* Object Detection
+* Image Processing
+* Machine Vision Systems
+
+### Industrial Automation
+
+* Siemens PLC
+* TIA Portal
+* Snap7 Communication
+* Industrial Inspection Systems
+
+### Software Development
+
+* Python
+* PyQt
+* Next.js
+* TypeScript
+
+---
+
+## Experience
+
+### Student Intern
+
+**Volkswagen Group India**
+
+* Exposure to industrial manufacturing processes
+* Automation and engineering workflows
+* Machine vision and inspection concepts
+* Production environment experience
+
+---
+
+## Recognition
+
+**Certificate of Appreciation – Camera Vision Automation Project**
+
+Received recognition for contributions to a camera vision automation project in an industrial manufacturing environment.
+
+---
+
+## Technology Stack
+
+* Python
+* OpenCV
+* YOLOv8
+* Siemens PLC
+* Snap7
+* PyQt
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+
+---
+
+## Connect
+
+**Portfolio**
+https://portfolio.coderishabhlab.qzz.io
+
+**LinkedIn**
+https://www.linkedin.com/in/amit-maurya-84b0922a5/
+
+**GitHub**
+https://github.com/Rishbyte-lgtm

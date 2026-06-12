@@ -26,33 +26,64 @@ export default function MobileMenu({ navItems, onNavigate }: MobileMenuProps) {
       <button
         type="button"
         onClick={handleClick}
-        className="grid h-11 w-11 place-items-center rounded border border-white/12 bg-white/6 lg:hidden light:border-slate-900/10 light:bg-white"
+        className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-white/12 bg-white/8 transition hover:border-white/20 hover:bg-white/12 active:bg-white/16 lg:hidden light:border-slate-900/12 light:bg-slate-900/10 light:hover:border-slate-800 light:hover:bg-slate-900/20 light:active:bg-slate-900/30"
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
+        aria-controls="mobile-menu"
       >
-        {isOpen ? <X size={20} /> : <Menu size={20} />}
+        <motion.div
+          animate={isOpen ? { rotate: 90, scale: 0.8 } : { rotate: 0, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="flex items-center justify-center"
+        >
+          {isOpen ? (
+            <X size={24} className="text-white light:text-slate-900" strokeWidth={2.5} />
+          ) : (
+            <Menu size={24} className="text-white light:text-slate-900" strokeWidth={2.5} />
+          )}
+        </motion.div>
       </button>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="border-t border-white/10 bg-[#07080b]/95 px-5 py-4 lg:hidden light:border-slate-900/10 light:bg-white/95"
-          >
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={handleNavClick}
-                className="block rounded px-3 py-3 font-semibold text-white/76 transition hover:bg-white/8 light:text-slate-800 light:hover:bg-slate-900/10"
-              >
-                {item}
-              </a>
-            ))}
-          </motion.div>
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm lg:hidden light:bg-white/10"
+              aria-hidden="true"
+            />
+
+            {/* Menu dropdown */}
+            <motion.div
+              id="mobile-menu"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="glass-panel fixed left-4 right-4 top-24 z-40 overflow-hidden rounded-lg border border-white/10 lg:hidden light:border-slate-900/10 sm:left-5 sm:right-5"
+            >
+              <nav className="flex flex-col divide-y divide-white/8 light:divide-slate-900/10">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={handleNavClick}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
+                    className="px-5 py-4 text-sm font-semibold text-white/78 transition hover:bg-white/8 hover:text-white active:bg-white/12 light:text-slate-700 light:hover:bg-slate-900/10 light:hover:text-slate-900 light:active:bg-slate-900/20 sm:text-base"
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

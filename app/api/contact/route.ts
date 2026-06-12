@@ -5,7 +5,11 @@ type ContactPayload = {
   name?: unknown;
   email?: unknown;
   company?: unknown;
-  projectType?: unknown;
+  industry?: unknown;
+  inspectionRequirement?: unknown;
+  timeline?: unknown;
+  plcBrand?: unknown;
+  budgetRange?: unknown;
   message?: unknown;
 };
 
@@ -90,12 +94,16 @@ export async function POST(request: NextRequest) {
   const name = sanitizeInput(payload.name, 100);
   const email = sanitizeInput(payload.email, 254).toLowerCase();
   const company = sanitizeInput(payload.company, 120);
-  const projectType = sanitizeInput(payload.projectType, 120);
+  const industry = sanitizeInput(payload.industry, 120);
+  const inspectionRequirement = sanitizeInput(payload.inspectionRequirement, 180);
+  const timeline = sanitizeInput(payload.timeline, 80);
+  const plcBrand = sanitizeInput(payload.plcBrand, 100);
+  const budgetRange = sanitizeInput(payload.budgetRange, 80);
   const message = sanitizeMessage(payload.message, 3000);
 
-  if (!name || !email || !message) {
+  if (!name || !email || !inspectionRequirement) {
     return NextResponse.json(
-      { error: "Name, email, and message are required." },
+      { error: "Name, email, and inspection requirement are required." },
       { status: 400 }
     );
   }
@@ -114,20 +122,24 @@ export async function POST(request: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const fromEmail = process.env.RESEND_FROM_EMAIL ?? "Amit Maurya Portfolio <onboarding@resend.dev>";
 
-  const text = `Name: ${name}
+const text = `Name: ${name}
 Email: ${email}
 Company: ${company || "Not provided"}
-Project Type: ${projectType || "Not provided"}
+Industry: ${industry || "Not provided"}
+Inspection Requirement: ${inspectionRequirement}
+Timeline: ${timeline || "Not provided"}
+PLC Brand: ${plcBrand || "Not provided"}
+Budget Range: ${budgetRange || "Not provided"}
 
-Message:
-${message}`;
+Additional Details:
+${message || "Not provided"}`;
 
   try {
     const { error } = await resend.emails.send({
       from: fromEmail,
       to: INQUIRY_RECIPIENT,
       replyTo: email,
-      subject: "New Portfolio Inquiry - Amit Maurya",
+      subject: `Inspection Requirement - ${inspectionRequirement}`,
       text
     });
 

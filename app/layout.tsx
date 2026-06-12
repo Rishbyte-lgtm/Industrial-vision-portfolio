@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+<<<<<<< HEAD
 // Optimize font loading
 const inter = Inter({
   subsets: ["latin"],
@@ -11,34 +12,38 @@ const inter = Inter({
 });
 
 const siteUrl = "https://amit-maurya-portfolio.local";
+=======
+const siteUrl = "https://portfolio.coderishabhlab.qzz.io";
+>>>>>>> 8f8ef18 (Reposition portfolio for inspection leads)
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Amit Maurya | Computer Vision & Industrial Automation Engineer",
+    default: "Amit Maurya | Machine Vision Inspection Engineer India",
     template: "%s | Amit Maurya"
   },
   description:
-    "Premium engineering portfolio for Amit Maurya, specializing in AI-powered machine vision, Siemens PLC integration, Snap7 automation, OpenCV, YOLOv8, and industrial inspection systems.",
+    "Machine vision inspection and industrial camera systems for manufacturing quality inspection, defect detection automation, part verification, and PLC-connected inspection workflows.",
   keywords: [
     "Amit Maurya",
-    "Computer Vision Engineer",
-    "Industrial Automation Engineer",
-    "Machine Vision",
-    "YOLOv8",
-    "OpenCV",
-    "Siemens PLC",
-    "TIA Portal",
-    "Snap7",
-    "PyQt",
-    "AI inspection systems"
+    "machine vision inspection",
+    "industrial vision systems",
+    "defect detection automation",
+    "manufacturing quality inspection",
+    "PLC camera inspection",
+    "machine vision engineer India",
+    "automated quality inspection",
+    "camera based inspection",
+    "part verification system",
+    "sealant inspection system",
+    "industrial automation India"
   ],
   authors: [{ name: "Amit Maurya" }],
   creator: "Amit Maurya",
   openGraph: {
-    title: "Amit Maurya | Industrial AI Vision Systems",
+    title: "Amit Maurya | Machine Vision Inspection Systems",
     description:
-      "Building AI-powered vision systems for industrial automation, inspection, and PLC-integrated manufacturing workflows.",
+      "Camera-based inspection systems for manufacturers who need defect detection, part verification, PASS/FAIL automation, and PLC-connected quality workflows.",
     type: "website",
     url: siteUrl,
     images: [
@@ -52,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amit Maurya | Computer Vision & Industrial Automation Engineer",
-    description: "AI-powered machine vision systems for industrial automation.",
+    title: "Amit Maurya | Machine Vision Inspection Engineer India",
+    description: "Automated vision inspection systems for manufacturing quality checks.",
     images: ["/images/camshaft-vision.png"]
   },
   alternates: {

@@ -1,24 +1,31 @@
 Amit Maurya
-Computer Vision & Industrial Automation Engineer
+Machine Vision Inspection and Industrial Automation
 
-Tagline:
-Building AI-Powered Vision Systems for Industrial Automation
+Positioning:
+I help manufacturers explore camera-based inspection systems for defect detection, part verification, automated quality checks, and PLC-connected PASS/FAIL workflows.
 
-Core Skills:
-Python, OpenCV, YOLOv8, Computer Vision, Siemens PLC, TIA Portal, Snap7, PyQt, Industrial Automation, Machine Vision
+Inspection Problems I Can Help With:
+- Defect detection workflows
+- Part presence verification
+- Camera-based measurement and angle checking
+- Operator inspection dashboards
+- PLC-triggered inspection workflows
+- Sealant inspection workflow development
 
-Experience:
+Relevant Technical Stack:
+Python, OpenCV, YOLOv8, PyQt, Siemens PLC, TIA Portal, Snap7, TypeScript
+
+Hands-On Project Experience:
+- Camshaft angle detection system
+- PLC-connected vision inspection workflow
+- Vision project orchestration unit
+- AI-based sealant inspection system currently in development
+
+Industrial Exposure:
 Volkswagen Group India - Student Intern
-Exposure to industrial manufacturing, automation systems, engineering workflows, and machine vision applications.
+Exposure to manufacturing workflows, automation systems, and industrial machine-vision use cases.
 
-Highlighted Achievement:
-Certificate of Appreciation for Camera Vision Automation Project
-
-Projects:
-AI-Based Camshaft Angle Detection System
-Vision Orchestration Unit
-PLC Integrated Vision Inspection System
-
-Links:
-GitHub: https://github.com/Rishbyte-lgtm
+Contact:
+Email: amitmauryaajm@gmail.com
 LinkedIn: https://www.linkedin.com/in/amit-maurya-84b0922a5/
+GitHub: https://github.com/Rishbyte-lgtm

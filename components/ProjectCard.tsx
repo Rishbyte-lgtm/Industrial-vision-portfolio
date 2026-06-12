@@ -33,7 +33,6 @@ export default function ProjectCard({ project, expanded, onToggle }: ProjectCard
 
   return (
     <motion.article
-      layout
       className="industrial-border glass-panel overflow-hidden rounded-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}

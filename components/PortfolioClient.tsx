@@ -90,7 +90,7 @@ const caseStudies: CaseStudy[] = [
   {
     title: "Camshaft Angle Detection System",
     category: "Inspection",
-    image: "/images/camshaft-vision.png",
+    image: "/Project-images/real_screenshot_camshaft.png",
     summary:
       "A camera-based inspection project focused on checking camshaft angle position and giving a clear PASS/FAIL decision to support quality inspection.",
     problem:
@@ -185,7 +185,7 @@ const developmentItems = [
 const proofItems = [
   {
     title: "End-to-End Demo Video",
-    status: "Needed",
+    status: "Available",
     description: "A short walkthrough showing image capture, inspection decision, operator screen, and PLC/result workflow.",
     icon: MonitorCheck
   },
@@ -197,16 +197,11 @@ const proofItems = [
   },
   {
     title: "Sample Inspection Outputs",
-    status: "Needed",
+    status: "Available",
     description: "Before/after examples, OK/NOK result screens, annotated detections, and rejected-part examples.",
     icon: ScanSearch
   },
-  {
-    title: "Certificates and Recognition",
-    status: "Needed",
-    description: "Certificate images or PDFs that verify industrial exposure, project recognition, or relevant training.",
-    icon: FileBadge
-  }
+
 ];
 
 const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
@@ -423,12 +418,12 @@ export default function PortfolioClient() {
       <Section id="proof" label="Proof Library" title="Evidence a Manufacturing Buyer Can Review">
         <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div {...fadeUp} className="industrial-border glass-panel overflow-hidden rounded-lg">
-            <div className="relative min-h-[300px] bg-slate-950">
+            <div className="relative min-h-[650px] bg-slate-950">
               <Image
                 src="/images/camshaft-vision.png"
                 alt="Camshaft inspection project visual evidence"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(min-width: 1024px) 44vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/20 to-transparent" />

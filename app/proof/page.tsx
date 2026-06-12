@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const availableVisuals = [
   {
     title: "Camshaft Inspection Visual",
-    image: "/images/camshaft-vision.png",
+    image: "/Project-images/camshaft.png",
     description: "Portfolio visual for the camshaft angle inspection case study."
   },
   {
@@ -31,10 +31,11 @@ const availableVisuals = [
   },
   {
     title: "Vision Orchestration Visual",
-    image: "/images/vision-orchestration.png",
+    image: "/Project-images/vision.png",
     description: "Portfolio visual for the machine-vision workflow management concept."
   }
 ];
+
 
 const proofSlots = [
   {
@@ -99,6 +100,7 @@ const videoStoryboard = [
 
 export default function ProofPage() {
   return (
+    
     <main className="min-h-screen bg-[#07080b] text-white">
       <div className="pointer-events-none fixed inset-0 bg-industrial-grid bg-[size:72px_72px] opacity-[0.08]" />
       <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -114,17 +116,46 @@ export default function ProofPage() {
           <div className="max-w-4xl">
             <div className="mb-5 inline-flex items-center gap-3 rounded border border-cyanline/30 bg-cyanline/8 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyanline">
               <BadgeCheck size={14} />
-              Proof Library
+             Project Evidence
             </div>
             <h1 className="text-balance text-4xl font-black leading-tight sm:text-6xl">
-              Evidence for Manufacturing Inspection Buyers
+              Project Demonstrations & Visual Evidence
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-              This page is designed to hold the proof a factory owner needs before starting a serious inspection automation conversation: demo video, screenshots, outputs, certificates, and real setup photos.
-            </p>
+              This page contains project demonstrations, inspection screenshots, workflow visuals, and development progress related to machine vision inspection systems and industrial automation projects.
+              </p>
           </div>
         </section>
+        <section className="pb-14 sm:pb-20">
+  <div className="mb-8">
+    <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">
+      Demo Video
+    </div>
+    <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+      Camshaft Angle Detection System Demo
+    </h2>
+    <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
+     Demonstration of the camshaft inspection workflow, including image capture, angle analysis, operator interface, and inspection decision output.
+    </p>
+  </div>
 
+  <div className="industrial-border glass-panel overflow-hidden rounded-lg p-4">
+    <video
+      controls
+      preload="metadata"
+      poster="/Project-images/real_screenshot_camshaft.png"
+      className="w-full rounded-lg"
+    >
+      <source
+        src="/videos/camshaft-demo.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+              
+{/* 
         <section className="pb-14 sm:pb-20">
           <div className="mb-8">
             <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">Evidence Checklist</div>
@@ -173,12 +204,12 @@ export default function ProofPage() {
               </div>
             </article>
           </div>
-        </section>
+        </section> */}
 
         <section className="pb-20">
           <div className="mb-8">
-            <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">Available Project Visuals</div>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Current Visual Evidence in the Repository</h2>
+            <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">Project Screenshots</div>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Screenshots from Active Development Projects</h2>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
             {availableVisuals.map((visual) => (

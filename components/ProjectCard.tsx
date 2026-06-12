@@ -46,7 +46,7 @@ export default function ProjectCard({ project, expanded, onToggle }: ProjectCard
             src={project.image}
             alt={`${project.title} case study visual`}
             fill
-            className={`object-cover transition duration-700 hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`object-contain transition duration-700 hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             sizes="(min-width: 1024px) 42vw, 100vw"
             onLoad={handleImageLoad}
             loading="lazy"

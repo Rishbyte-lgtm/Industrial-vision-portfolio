@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const availableVisuals = [
   {
     title: "Camshaft Inspection Visual",
-    image: "/Project-images/camshaft.png",
+    image: "/Project-images/real_screenshot_camshaft.png",
     description: "Portfolio visual for the camshaft angle inspection case study."
   },
   {

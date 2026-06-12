@@ -12,6 +12,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   min-height: 100vh;
   background: var(--background);
@@ -31,17 +46,24 @@ body.light {
 
 .glass-panel {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
     rgba(13, 16, 22, 0.78);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(20px);
+  will-change: auto;
+}
+
+/* Reduce blur on mobile for performance */
+@media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .light .glass-panel {
   border-color: rgba(9, 20, 36, 0.11);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(244, 247, 251, 0.76)),
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(244, 247, 251, 0.76)),
     rgba(255, 255, 255, 0.8);
   box-shadow: 0 22px 70px rgba(24, 39, 64, 0.12);
 }
@@ -56,13 +78,17 @@ body.light {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(53, 214, 255, 0.48), rgba(57, 255, 136, 0.22), rgba(255, 181, 71, 0.18));
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  background: linear-gradient(
+    135deg,
+    rgba(53, 214, 255, 0.48),
+    rgba(57, 255, 136, 0.22),
+    rgba(255, 181, 71, 0.18)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  will-change: auto;
 }
 
 .text-balance {
@@ -76,4 +102,31 @@ body.light {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Prevent font zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }

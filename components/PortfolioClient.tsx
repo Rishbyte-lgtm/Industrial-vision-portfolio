@@ -295,7 +295,7 @@ export default function PortfolioClient() {
               <Factory size={20} />
             </span>
             <span className="hidden sm:block">
-              <span className="block text-base font-black tracking-[0.18em] sm:text-lg">AMIT</span>
+              <span className="block text-base font-black tracking-[0.18em] sm:text-lg">AMIT MAURYA</span>
               <span className="block text-xs font-bold uppercase tracking-[0.24em] text-cyanline">Inspection Automation</span>
             </span>
           </a>
@@ -418,7 +418,7 @@ export default function PortfolioClient() {
       <Section id="proof" label="Proof Library" title="Evidence a Manufacturing Buyer Can Review">
         <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div {...fadeUp} className="industrial-border glass-panel overflow-hidden rounded-lg">
-            <div className="relative min-h-[650px] bg-slate-950">
+            <div className="relative min-h-[550px] bg-slate-950">
               <Image
                 src="/images/camshaft-vision.png"
                 alt="Camshaft inspection project visual evidence"
@@ -472,7 +472,7 @@ export default function PortfolioClient() {
           <div className="grid gap-0 lg:grid-cols-[0.82fr_1.18fr]">
             <div className="relative min-h-[260px] overflow-hidden bg-slate-950">
               <Image
-                src="/images/plc-vision.png"
+                src="/Project-images/sealant application.png"
                 alt="Inspection workflow development visual"
                 fill
                 className="object-cover opacity-72"

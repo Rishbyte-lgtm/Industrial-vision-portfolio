@@ -1,20 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-<<<<<<< HEAD
-// Optimize font loading
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  variable: "--font-sans"
-});
-
-const siteUrl = "https://amit-maurya-portfolio.local";
-=======
 const siteUrl = "https://portfolio.coderishabhlab.qzz.io";
->>>>>>> 8f8ef18 (Reposition portfolio for inspection leads)
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -70,7 +57,6 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#07080b",
-  // Prevent layout shift on mobile
   viewportFit: "cover"
 };
 
@@ -80,12 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <head>
-        {/* Preconnect to external resources */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+    <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

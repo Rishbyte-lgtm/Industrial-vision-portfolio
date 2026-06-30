@@ -344,7 +344,7 @@ export default function PortfolioClient() {
                 View Projects <ScanSearch size={16} />
               </a>
               <a
-                href="/Amit-Maurya-Resume-Brief.txt"
+                href="/MY_RESUME.pdf"
                 download
                 className="inline-flex items-center justify-center gap-2 rounded border border-cyanline/38 bg-cyanline/10 px-5 py-4 text-xs font-black uppercase tracking-[0.14em] text-cyanline transition hover:bg-cyanline/20 sm:px-6 sm:text-sm"
               >

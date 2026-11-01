@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/three": "^0.187.0",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.468.0",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "resend": "^4.8.0"
+    "resend": "^4.8.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

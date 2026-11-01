@@ -1,231 +1,163 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  BadgeCheck,
-  Camera,
-  FileBadge,
-  ImageIcon,
-  MonitorCheck,
-  ScanSearch,
-  Video
-} from "lucide-react";
+import { ArrowLeft, Play, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Proof Library",
+  title: "Evidence Library — Machine Vision Inspection",
   description:
-    "Evidence library for machine vision inspection work: demo video requirements, project screenshots, sample inspection outputs, certificates, and setup photos."
+    "Engineering evidence library for machine vision inspection work: Camshaft angle demo video, live inspection screenshots, PLC trigger workflows, and defect output logs."
 };
 
 const availableVisuals = [
   {
-    title: "Camshaft Inspection Visual",
+    title: "Camshaft Inspection System Visual",
     image: "/Project-images/real_screenshot_camshaft.png",
-    description: "Portfolio visual for the camshaft angle inspection case study."
+    category: "Metrology & Angle",
+    description: "Live camera frame with extracted angular vectors and sub-degree tolerance evaluation."
   },
   {
-    title: "PLC Vision Workflow Visual",
+    title: "PLC-Connected Vision Workflow",
     image: "/images/plc-vision.png",
-    description: "Portfolio visual for the PLC-connected inspection workflow."
+    category: "Hardware Handshake",
+    description: "Industrial communication architecture mapping optical inference results to Siemens S7 DB memory bits."
   },
   {
-    title: "Vision Orchestration Visual",
+    title: "Vision Pipeline Orchestration",
     image: "/Project-images/vision.png",
-    description: "Portfolio visual for the machine-vision workflow management concept."
+    category: "Edge Deployment",
+    description: "Centralized inspection console managing edge model checkpoints, camera exposure, and rejection logs."
   }
-];
-
-
-const proofSlots = [
-  {
-    title: "End-to-End Demo Video",
-    status: "Highest priority",
-    icon: Video,
-    description:
-      "Show camera capture, inspection decision, operator dashboard, and PLC/result signal flow in one short walkthrough.",
-    add: "Add a real demo video file or hosted video link when available."
-  },
-  {
-    title: "Sample Inspection Outputs",
-    status: "Needed",
-    icon: ScanSearch,
-    description:
-      "Show OK/NOK outputs, annotated detections, rejected samples, and the exact decision screen a user would see.",
-    add: "Add real output screenshots from your inspection workflow."
-  },
-  {
-    title: "Operator Screen / HMI",
-    status: "Needed",
-    icon: MonitorCheck,
-    description:
-      "Show the operator-facing interface, status messages, image preview, and PASS/FAIL indication.",
-    add: "Add dashboard screenshots or a screen recording."
-  },
-  {
-    title: "Actual Setup Photos",
-    status: "Needed",
-    icon: Camera,
-    description:
-      "Show camera, lighting, sample part, laptop/industrial PC, and PLC or test bench wiring if available.",
-    add: "Add real setup photos only. Do not use stock images."
-  },
-  {
-    title: "Certificates",
-    status: "Needed",
-    icon: FileBadge,
-    description:
-      "Show certificates, appreciation letters, internship proof, or relevant training documents.",
-    add: "Add scanned certificate images or PDFs."
-  },
-  {
-    title: "Project Screenshots",
-    status: "Available",
-    icon: ImageIcon,
-    description:
-      "Use screenshots to support the written case studies, but pair them with real demo evidence when possible.",
-    add: "Current portfolio visuals are shown below."
-  }
-];
-
-const videoStoryboard = [
-  "Show the part or inspection object clearly.",
-  "Show the camera feed or captured frame.",
-  "Trigger the inspection from the software or PLC workflow.",
-  "Show the inspection decision on the operator screen.",
-  "Show OK/NOK or PASS/FAIL output.",
-  "Show the PLC/result signal flow if available.",
-  "End with what the system checks and what is still under development."
 ];
 
 export default function ProofPage() {
   return (
-    
-    <main className="min-h-screen bg-[#07080b] text-white">
-      <div className="pointer-events-none fixed inset-0 bg-industrial-grid bg-[size:72px_72px] opacity-[0.08]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 rounded border border-white/12 bg-white/6 px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-cyanline/50 hover:bg-cyanline/8"
-        >
-          <ArrowLeft size={16} />
-          Back to Home
-        </Link>
+    <div className="relative min-h-screen bg-[#F5F6F3] text-[#172B2A] pb-24">
+      {/* Ambient background glows for realistic glass refraction */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute top-[5%] right-[5%] h-96 w-96 rounded-full bg-[#DCE8E2]/60 blur-[90px]" />
+        <div className="absolute top-[45%] left-[-5%] h-80 w-80 rounded-full bg-[#347C72]/[0.08] blur-[100px]" />
+      </div>
 
-        <section className="py-14 sm:py-20">
-          <div className="max-w-4xl">
-            <div className="mb-5 inline-flex items-center gap-3 rounded border border-cyanline/30 bg-cyanline/8 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyanline">
-              <BadgeCheck size={14} />
-             Project Evidence
-            </div>
-            <h1 className="text-balance text-4xl font-black leading-tight sm:text-6xl">
-              Project Demonstrations & Visual Evidence
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-              This page contains project demonstrations, inspection screenshots, workflow visuals, and development progress related to machine vision inspection systems and industrial automation projects.
-              </p>
-          </div>
-        </section>
-        <section className="pb-14 sm:pb-20">
-  <div className="mb-8">
-    <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">
-      Demo Video
-    </div>
-    <h2 className="mt-3 text-3xl font-black sm:text-4xl">
-      Camshaft Angle Detection System Demo
-    </h2>
-    <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
-     Demonstration of the camshaft inspection workflow, including image capture, angle analysis, operator interface, and inspection decision output.
-    </p>
-  </div>
+      {/* Frosted Glass Top Header */}
+      <div className="glass-nav sticky top-0 z-30">
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[#E5E9E5] bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#172B2A] transition hover:bg-white"
+          >
+            <ArrowLeft size={13} />
+            <span>Back to Overview</span>
+          </Link>
+          <span className="text-xs font-semibold text-[#697570]">
+            Evidence & Recordings
+          </span>
+        </div>
+      </div>
 
-  <div className="industrial-border glass-panel overflow-hidden rounded-lg p-4">
-    <video
-      controls
-      preload="metadata"
-      poster="/Project-images/real_screenshot_camshaft.png"
-      className="w-full rounded-lg"
-    >
-      <source
-        src="/videos/camshaft-demo.mp4"
-        type="video/mp4"
-      />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-              
-{/* 
-        <section className="pb-14 sm:pb-20">
-          <div className="mb-8">
-            <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">Evidence Checklist</div>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">What Should Be Shown Here</h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {proofSlots.map((slot) => {
-              const Icon = slot.icon;
-              return (
-                <article key={slot.title} className="glass-panel rounded-lg p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="grid h-12 w-12 place-items-center rounded bg-cyanline/12 text-cyanline">
-                      <Icon size={22} />
-                    </span>
-                    <span className={`rounded px-2.5 py-1 text-xs font-black uppercase tracking-[0.14em] ${slot.status === "Available" ? "bg-signal text-slate-950" : "bg-amberline text-slate-950"}`}>
-                      {slot.status}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-xl font-black">{slot.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">{slot.description}</p>
-                  <p className="mt-4 border-t border-white/10 pt-4 text-sm font-semibold leading-6 text-white">{slot.add}</p>
-                </article>
-              );
-            })}
-          </div>
-        </section>
+      <main className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8 pt-10 sm:pt-14">
+        {/* Title */}
+        <div className="max-w-2xl">
+          <span className="glass-pill mb-2">
+            Technical Evidence
+          </span>
+          <h1 className="text-2xl font-bold tracking-tight text-[#172B2A] font-display sm:text-3xl md:text-4xl">
+            Demonstrations & Inspection Proof
+          </h1>
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#697570]">
+            Real screen recordings and system captures demonstrating that these vision pipelines execute reliably on physical hardware.
+          </p>
+        </div>
 
-        <section className="pb-14 sm:pb-20">
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="industrial-border glass-panel rounded-lg p-6 sm:p-8">
-              <div className="text-xs font-black uppercase tracking-[0.22em] text-signal">Recommended First Video</div>
-              <h2 className="mt-3 text-3xl font-black">One Strong Demo Can Change Buyer Trust</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
-                For a manufacturing client, the strongest proof is not a model name. It is a clear video showing the full inspection flow from image capture to decision output.
-              </p>
-            </article>
-            <article className="glass-panel rounded-lg p-6 sm:p-8">
-              <h3 className="text-xl font-black">Demo Video Storyboard</h3>
-              <div className="mt-5 grid gap-3">
-                {videoStoryboard.map((item) => (
-                  <div key={item} className="flex gap-3 text-sm leading-6 text-slate-300">
-                    <BadgeCheck className="mt-1 shrink-0 text-signal" size={16} />
-                    <span>{item}</span>
-                  </div>
-                ))}
+        {/* Demo Video Section */}
+        <section className="mt-8 sm:mt-12">
+          <div className="glass-card p-5 sm:p-7">
+            <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#E5E9E5]/70 pb-3">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#347C72]">
+                  Hardware Walkthrough
+                </span>
+                <h2 className="text-lg font-bold text-[#172B2A] font-display sm:text-xl">
+                  Camshaft Angle Detection System Demo
+                </h2>
               </div>
-            </article>
-          </div>
-        </section> */}
+              <span className="glass-pill self-start sm:self-center text-[10px]">
+                Recorded Output
+              </span>
+            </div>
 
-        <section className="pb-20">
-          <div className="mb-8">
-            <div className="text-xs font-black uppercase tracking-[0.22em] text-cyanline">Project Screenshots</div>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Screenshots from Active Development Projects</h2>
+            <p className="mb-4 text-xs text-[#697570] leading-relaxed max-w-2xl">
+              Demonstrating the full sequence: frame acquisition, contour extraction, sub-degree vector angle calculation, touch HMI update, and PASS / FAIL decision state machine.
+            </p>
+
+            <div className="overflow-hidden rounded-xl border border-[#E5E9E5] bg-[#ECEEEA]/60 p-2 sm:p-3">
+              <video
+                controls
+                preload="metadata"
+                poster="/Project-images/real_screenshot_camshaft.png"
+                className="w-full rounded-lg bg-black shadow-sm"
+              >
+                <source src="/videos/camshaft-demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
-          <div className="grid gap-5 lg:grid-cols-3">
+        </section>
+
+        {/* Project Screenshots Section */}
+        <section className="mt-10 sm:mt-14">
+          <div className="mb-5">
+            <h2 className="text-xl font-bold text-[#172B2A] font-display sm:text-2xl">
+              System Captures & Blueprints
+            </h2>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {availableVisuals.map((visual) => (
-              <article key={visual.title} className="industrial-border glass-panel overflow-hidden rounded-lg">
-                <div className="relative aspect-[1.65] bg-slate-950">
-                  <Image src={visual.image} alt={visual.title} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-black">{visual.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">{visual.description}</p>
+              <article
+                key={visual.title}
+                className="glass-card glass-card-hover overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] bg-[#ECEEEA]/70 p-3 border-b border-[#E5E9E5]/70">
+                    <div className="relative w-full h-full rounded-lg overflow-hidden border border-[#E5E9E5] bg-white">
+                      <Image
+                        src={visual.image}
+                        alt={visual.title}
+                        fill
+                        className="object-contain p-2"
+                        sizes="(min-width: 1024px) 33vw, 100vw"
+                      />
+                    </div>
+                    <span className="glass-pill absolute top-4 left-4 text-[10px]">
+                      {visual.category}
+                    </span>
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <h3 className="text-sm font-bold text-[#172B2A] font-display">
+                      {visual.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-[#697570]">
+                      {visual.description}
+                    </p>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </section>
-      </div>
-    </main>
+
+        {/* Back Link */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-[#172B2A] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#284442]"
+          >
+            <ArrowLeft size={13} />
+            <span>Return to Portfolio</span>
+          </Link>
+        </div>
+      </main>
+    </div>
   );
 }

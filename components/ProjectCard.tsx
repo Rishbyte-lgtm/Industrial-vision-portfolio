@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { BadgeCheck, ChevronDown } from "lucide-react";
-import { useCallback, useState } from "react";
+import { ArrowUpRight, ChevronDown, Check, Play, Maximize2 } from "lucide-react";
+import React, { useState } from "react";
+import ImageModal from "./ImageModal";
 
 export type CaseStudy = {
   title: string;
@@ -11,11 +13,10 @@ export type CaseStudy = {
   image: string;
   summary: string;
   problem: string;
-  challenge: string;
   solution: string;
   workflow: string[];
   technologies: string[];
-  personallyBuilt: string[];
+  demoVideo?: boolean;
 };
 
 interface ProjectCardProps {
@@ -26,100 +27,165 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, expanded, onToggle }: ProjectCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  const handleImageLoad = useCallback(() => {
-    setImageLoaded(true);
-  }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <motion.article
-      className="industrial-border glass-panel overflow-hidden rounded-lg"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="grid gap-0 lg:grid-cols-[0.88fr_1.12fr]">
-        <div className="relative min-h-[260px] overflow-hidden lg:min-h-full">
-          <Image
-            src={project.image}
-            alt={`${project.title} case study visual`}
-            fill
-            className={`object-contain transition duration-700 hover:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            onLoad={handleImageLoad}
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/12 to-transparent" />
-          <span className="absolute left-5 top-5 rounded bg-black/70 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-signal">
-            {project.category}
-          </span>
-        </div>
-
-        <div className="flex flex-col p-5 sm:p-6 md:p-8">
-          <h3 className="text-xl font-black sm:text-2xl md:text-3xl">{project.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-slate-300 light:text-slate-600 sm:mt-4 sm:text-base sm:leading-7">
-            {project.summary}
-          </p>
-
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            <CasePoint label="Problem" text={project.problem} />
-            <CasePoint label="Challenge" text={project.challenge} />
-            <CasePoint label="Solution" text={project.solution} />
-          </div>
-
-          <button
-            type="button"
-            onClick={onToggle}
-            className="mt-5 inline-flex items-center gap-2 rounded border border-white/14 px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-cyanline/50 hover:bg-cyanline/8 light:border-slate-900/14 light:text-slate-950 sm:mt-6 sm:px-4 sm:py-3 sm:text-sm"
-            aria-expanded={expanded}
+    <>
+      <article className="glass-card glass-card-hover overflow-hidden">
+        <div className="grid gap-0 lg:grid-cols-[0.88fr_1.12fr]">
+          {/* Project Visual with Click to Expand */}
+          <div
+            onClick={() => setIsModalOpen(true)}
+            className="group/img cursor-pointer relative min-h-[240px] sm:min-h-[260px] bg-[#ECEEEA]/70 p-4 sm:p-7 flex items-center justify-center border-b border-white/80 lg:border-b-0 lg:border-r"
           >
-            Case Study Details
-            <ChevronDown className={`transition duration-300 ${expanded ? "rotate-180" : ""}`} size={16} />
-          </button>
-
-          {expanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <div className="mt-5 grid gap-4 rounded border border-white/10 bg-black/22 p-4 light:border-slate-900/10 light:bg-white/52 sm:p-5 lg:grid-cols-3">
-                <DetailList title="Workflow" items={project.workflow} accent="text-cyanline" />
-                <DetailList title="Technologies Used" items={project.technologies} accent="text-signal" />
-                <DetailList title="Personally Built" items={project.personallyBuilt} accent="text-amberline" />
+            <div className="relative w-full h-full min-h-[190px] max-h-[290px] rounded-xl overflow-hidden border border-[#E5E9E5] bg-white shadow-sm">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className={`object-contain p-2 transition-transform duration-300 group-hover/img:scale-105 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                onLoad={() => setImageLoaded(true)}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-[#172B2A]/0 transition-colors group-hover/img:bg-[#172B2A]/10 flex items-center justify-center">
+                <span className="opacity-0 group-hover/img:opacity-100 transition-opacity rounded-full bg-white/90 p-2 text-[#172B2A] shadow-md">
+                  <Maximize2 size={16} />
+                </span>
               </div>
-            </motion.div>
-          )}
-        </div>
-      </div>
-    </motion.article>
-  );
-}
-
-function CasePoint({ label, text }: { label: string; text: string }) {
-  return (
-    <div className="rounded border border-white/10 bg-white/5 p-3 light:border-slate-900/10 light:bg-white/40">
-      <div className="text-xs font-black uppercase tracking-[0.18em] text-cyanline">{label}</div>
-      <p className="mt-2 text-xs leading-5 text-slate-300 light:text-slate-600 sm:text-sm sm:leading-6">{text}</p>
-    </div>
-  );
-}
-
-function DetailList({ title, items, accent }: { title: string; items: string[]; accent: string }) {
-  return (
-    <div>
-      <div className={`text-xs font-black uppercase tracking-[0.2em] ${accent}`}>{title}</div>
-      <div className="mt-3 space-y-2">
-        {items.map((item) => (
-          <div key={item} className="flex gap-2 text-xs leading-5 text-slate-300 light:text-slate-600 sm:text-sm sm:leading-6">
-            <BadgeCheck className={`mt-0.5 shrink-0 ${accent}`} size={15} />
-            <span>{item}</span>
+            </div>
+            <span className="glass-pill absolute top-4 left-4 sm:top-5 sm:left-5 text-[10px] sm:text-[11px]">
+              {project.category}
+            </span>
           </div>
-        ))}
-      </div>
-    </div>
+
+          {/* Realistic, Concise Content */}
+          <div className="p-5 sm:p-7 md:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-xs font-semibold text-[#347C72] flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#347C72]" />
+                  Field Project
+                </span>
+                {project.demoVideo && (
+                  <Link
+                    href="/proof"
+                    className="inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-semibold text-[#347C72] border border-[#E5E9E5] hover:bg-white transition-colors"
+                  >
+                    <Play size={10} className="fill-[#347C72]" />
+                    <span>Demo Recording</span>
+                  </Link>
+                )}
+              </div>
+
+              <h3 className="mt-2 text-xl font-bold tracking-tight text-[#172B2A] font-display sm:text-2xl">
+                {project.title}
+              </h3>
+
+              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#697570]">
+                {project.summary}
+              </p>
+
+              {/* Problem & Solution Inset */}
+              <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                <div className="glass-card-inset p-3">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#172B2A]">
+                    Problem
+                  </div>
+                  <p className="mt-1 text-xs text-[#697570] leading-relaxed">
+                    {project.problem}
+                  </p>
+                </div>
+
+                <div className="glass-card-inset p-3">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#347C72]">
+                    Engineered Solution
+                  </div>
+                  <p className="mt-1 text-xs text-[#697570] leading-relaxed">
+                    {project.solution}
+                  </p>
+                </div>
+              </div>
+
+              {/* Tech Tags */}
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-lg bg-white/80 px-2.5 py-1 text-[11px] font-medium text-[#172B2A] border border-[#E5E9E5]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Row */}
+            <div className="mt-5 pt-4 border-t border-[#E5E9E5]/70 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={onToggle}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#172B2A] hover:text-[#347C72] transition-colors"
+              >
+                <span>{expanded ? "Hide Sequence" : "View Sequence Steps"}</span>
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-200 text-[#697570] ${
+                    expanded ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1 text-xs font-medium text-[#697570] hover:text-[#172B2A] transition-colors"
+              >
+                <span>Inquire</span>
+                <ArrowUpRight size={13} />
+              </a>
+            </div>
+
+            {/* Expandable Workflow */}
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="mt-4 pt-4 border-t border-[#E5E9E5]/70"
+              >
+                <div className="glass-card-inset p-4">
+                  <div className="text-xs font-bold text-[#172B2A] mb-2.5">
+                    Inspection Sequence:
+                  </div>
+                  <ul className="space-y-1.5">
+                    {project.workflow.map((step, idx) => (
+                      <li key={step} className="flex items-start gap-2 text-xs text-[#697570]">
+                        <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#DCE8E2] text-[10px] font-bold text-[#347C72] mt-0.5">
+                          {idx + 1}
+                        </span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </article>
+
+      {/* Lightbox Modal */}
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        imageSrc={project.image}
+        imageAlt={project.title}
+        title={project.title}
+        category={project.category}
+      />
+    </>
   );
 }

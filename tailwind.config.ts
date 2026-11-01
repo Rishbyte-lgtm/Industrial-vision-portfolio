@@ -6,27 +6,55 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./lib/**/*.{js,ts,jsx,tsx,mdx}"
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        graphite: "#07080b",
-        panel: "#11141a",
-        steel: "#8e98a8",
-        signal: "#39ff88",
-        cyanline: "#35d6ff",
-        amberline: "#ffb547"
+        // Requested restrained color system
+        background: "#F5F6F3",
+        surface: "#FFFFFF",
+        forest: "#172B2A",
+        "muted-grey": "#697570",
+        teal: {
+          DEFAULT: "#347C72",
+          hover: "#2a655d",
+          light: "#eaf2f0"
+        },
+        sage: {
+          DEFAULT: "#DCE8E2",
+          light: "#edf4f0"
+        },
+        border: {
+          DEFAULT: "#E5E9E5",
+          dark: "#d1d9d1"
+        }
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+        sans: [
+          "var(--font-sans)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif"
+        ],
+        display: [
+          "var(--font-display)",
+          '"Newsreader"',
+          '"Cormorant Garamond"',
+          "Georgia",
+          "serif"
+        ]
       },
       boxShadow: {
-        glow: "0 0 38px rgba(53, 214, 255, 0.18)",
-        signal: "0 0 34px rgba(57, 255, 136, 0.18)"
+        subtle: "0 1px 3px rgba(23, 43, 42, 0.04), 0 4px 12px rgba(23, 43, 42, 0.02)",
+        card: "0 2px 8px rgba(23, 43, 42, 0.04), 0 12px 24px rgba(23, 43, 42, 0.03)",
+        elevated: "0 12px 36px rgba(23, 43, 42, 0.06)"
       },
-      backgroundImage: {
-        "industrial-grid":
-          "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
+      borderRadius: {
+        card: "16px",
+        pill: "9999px"
       }
     }
   },

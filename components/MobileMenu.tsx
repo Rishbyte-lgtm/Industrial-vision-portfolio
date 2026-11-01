@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 
 interface MobileMenuProps {
-  navItems: string[];
+  navItems: { label: string; href: string }[];
   onNavigate?: () => void;
 }
 
@@ -26,62 +26,88 @@ export default function MobileMenu({ navItems, onNavigate }: MobileMenuProps) {
       <button
         type="button"
         onClick={handleClick}
-        className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-white/12 bg-white/8 transition hover:border-white/20 hover:bg-white/12 active:bg-white/16 lg:hidden light:border-slate-900/12 light:bg-slate-900/10 light:hover:border-slate-800 light:hover:bg-slate-900/20 light:active:bg-slate-900/30"
-        aria-label="Open navigation menu"
+        className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-[#E5E9E5] bg-white text-[#172B2A] transition hover:bg-[#F5F6F3] active:scale-95 sm:hidden"
+        aria-label="Toggle navigation menu"
         aria-expanded={isOpen}
-        aria-controls="mobile-menu"
       >
-        <motion.div
-          animate={isOpen ? { rotate: 90, scale: 0.8 } : { rotate: 0, scale: 1 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center justify-center"
-        >
-          {isOpen ? (
-            <X size={24} className="text-white light:text-slate-900" strokeWidth={2.5} />
-          ) : (
-            <Menu size={24} className="text-white light:text-slate-900" strokeWidth={2.5} />
-          )}
-        </motion.div>
+        {isOpen ? <X size={18} strokeWidth={2} /> : <Menu size={18} strokeWidth={2} />}
       </button>
 
       <AnimatePresence mode="wait">
         {isOpen && (
           <>
-            {/* Backdrop overlay */}
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm lg:hidden light:bg-white/10"
+              className="fixed inset-0 z-40 bg-[#172B2A]/30 backdrop-blur-sm sm:hidden"
               aria-hidden="true"
             />
 
-            {/* Menu dropdown */}
+            {/* Clean Frosted Dropdown Sheet */}
             <motion.div
-              id="mobile-menu"
-              initial={{ opacity: 0, y: -12 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="glass-panel fixed left-4 right-4 top-24 z-40 overflow-hidden rounded-lg border border-white/10 lg:hidden light:border-slate-900/10 sm:left-5 sm:right-5"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="glass-card fixed left-4 right-4 top-20 z-50 overflow-hidden bg-white/95 p-4 shadow-2xl sm:hidden"
             >
-              <nav className="flex flex-col divide-y divide-white/8 light:divide-slate-900/10">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
+              <div className="flex items-center justify-between border-b border-[#E5E9E5]/70 pb-3 px-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#697570]">
+                  Navigation
+                </span>
+                <span className="flex items-center gap-1.5 text-xs text-[#347C72] font-semibold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#347C72]" />
+                  Open for Projects
+                </span>
+              </div>
+
+              <nav className="mt-2 flex flex-col space-y-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
                     onClick={handleNavClick}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.2 }}
-                    className="px-5 py-4 text-sm font-semibold text-white/78 transition hover:bg-white/8 hover:text-white active:bg-white/12 light:text-slate-700 light:hover:bg-slate-900/10 light:hover:text-slate-900 light:active:bg-slate-900/20 sm:text-base"
+                    className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-[#172B2A] transition hover:bg-[#F5F6F3]"
                   >
-                    {item}
-                  </motion.a>
+                    <span>{item.label}</span>
+                    <ArrowUpRight size={14} className="text-[#697570]" />
+                  </a>
                 ))}
               </nav>
+
+              <div className="mt-3 pt-3 border-t border-[#E5E9E5]/70 flex flex-col gap-2">
+                <a
+                  href="https://wa.me/918810964633?text=Hello%20Amit%2C%20I%20reviewed%20your%20portfolio"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={handleNavClick}
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#DCE8E2] py-2.5 text-center text-xs font-bold text-[#172B2A] transition hover:bg-[#c9ddd3]"
+                >
+                  <MessageCircle size={14} className="text-[#347C72]" />
+                  <span>WhatsApp: +91 8810964633</span>
+                </a>
+
+                <div className="flex gap-2">
+                  <a
+                    href="#contact"
+                    onClick={handleNavClick}
+                    className="flex-1 rounded-xl bg-[#172B2A] py-2.5 text-center text-xs font-semibold text-white transition hover:bg-[#284442]"
+                  >
+                    Get in Touch
+                  </a>
+                  <a
+                    href="/MY_RESUME.pdf"
+                    download
+                    className="rounded-xl border border-[#E5E9E5] bg-white px-4 py-2.5 text-center text-xs font-semibold text-[#172B2A] hover:bg-[#F5F6F3]"
+                  >
+                    Resume
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </>
         )}
